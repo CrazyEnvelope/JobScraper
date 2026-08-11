@@ -1,0 +1,56 @@
+.jobs_list{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.job_content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: lightgoldenrodyellow;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    border-left: 5px solid;
+}
+
+.job_details{
+    display: flex;
+    flex-direction: column;
+}
+
+.job_title{
+    margin: 0px;
+}
+
+.job_company{
+     margin: 0px 0px 0px 0px;
+}
+
+.job_location{
+    margin: 0px 0px 0px 0px;
+    color: dimgrey;
+}
+
+.button-details, .button-apply{
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    align-self: center;
+    text-decoration: none;
+    margin: 0px 0px 0px 10px;
+}
+
+.button-details{
+    background-color: #ff9f52;
+}
+
+.button-apply{
+     background-color: tomato;
+}
+
+

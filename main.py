@@ -1,6 +1,12 @@
 from bs4 import BeautifulSoup
 import requests
 
+from flask import Flask
+from flask import render_template
+
+app = Flask(__name__)
+
+
 URL = "https://weworkremotely.com/"
 page = requests.get(URL)
 
@@ -46,6 +52,7 @@ for job in jobs:
         location = location_element.get_text(strip=True)
 
     job_details = {
+        "id": len(jobs_list),
         "title": title,
         "company": company,
         "location": location,
@@ -54,8 +61,12 @@ for job in jobs:
 
     jobs_list.append(job_details)
 
-print(jobs_list)
+@app.route("/")
+def display_jobs():
+    return render_template("index.html", jobs_list=jobs_list)
 
-
+@app.route("/job/<string:job_id>")
+def open_details(job_id):
+    return f"Job {job_id}"
 
 

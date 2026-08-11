@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<head>
+    <title>Job Scrapper</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/styles/styles.css">
+</head>
+<body>
+    <ul class="jobs_list">
+        {%for job in jobs_list%}
+           <li class="job_content">
+            <div class="job_details">
+                <h3 class="job_title">{{job["title"]}}</h3>
+                <p class="job_company">{{job["company"]}}</p>
+                <p class="job_location">{{job["location"]}}</p>
+            </div>
+               <div class="info-button">
+                   <a href="{{url_for('open_details',job_id=job['id'])}}" class="button-details">Details</a>
+                   <a href="{{job['link']}}" class="button-apply">Apply</a>
+               </div>
+            </li>
+        {%endfor%}
+    </ul>
+</body>
