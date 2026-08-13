@@ -4,8 +4,9 @@ import requests
 from flask import Flask
 from flask import render_template
 
-app = Flask(__name__)
+from utils.ollama_sumarizer import resume_job_description
 
+app = Flask(__name__)
 
 URL = "https://weworkremotely.com/"
 page = requests.get(URL)
@@ -61,12 +62,24 @@ for job in jobs:
 
     jobs_list.append(job_details)
 
+def add_job_details(job_id):
+    job_details = jobs_list[job_id]
+    page = requests.get(job_details["link"])
+    soup = BeautifulSoup(page.content, "html.parser")
+    job_description_element = soup.find("div",{"class":"lis-container__job__content"})
+
+    job_details.update({"details": resume_job_description(job_description_element.get_text(separator= " ", strip=True))})
+
 @app.route("/")
 def display_jobs():
     return render_template("index.html", jobs_list=jobs_list)
 
 @app.route("/job/<string:job_id>")
 def open_details(job_id):
-    return f"Job {job_id}"
+
+    if "details" not in jobs_list[int(job_id)]:
+        add_job_details(int(job_id))
+
+    return render_template("job_details.html", job_details=jobs_list[int(job_id)])
 
 

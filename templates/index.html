@@ -1,10 +1,20 @@
 <!DOCTYPE html>
 <head>
-    <title>Job Scrapper</title>
+    <title>Job Radar</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../static/styles/styles.css">
 </head>
 <body>
+    <div class="hero_header">
+        <div class="hero_overlay">
+            <div class="hero_content">
+                <h1 style="text-align: center; font-size: 4rem;">Job Radar</h1>
+                <p style="font-size:1rem;">Spot the opportunities that matter.</p>
+            </div>
+        </div>
+
+    </div>
+
     <ul class="jobs_list">
         {%for job in jobs_list%}
            <li class="job_content">

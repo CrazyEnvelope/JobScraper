@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{job_details["title"]}}</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/styles/styles.css"/>
+</head>
+<body>
+    <div class = "job_header">
+        <a href="{{url_for('display_jobs')}}" class="button-back-to-jobs">Back to Jobs</a>
+        <h1>{{job_details["title"]}}</h1>
+        <a href={{job_details["link"]}} class="button-back-to-jobs" style="margin-left:auto;">Apply</a>
+    </div>
+
+    <div class="job_description">
+        <div class="job_basicinfo">
+            <div class="job_basicinfo_1">
+               <div class="job_basicinfo_1_company">
+
+                    <h3 class="job_basicinfo_1_company_title"><img class="logo" src="../static/img/company.png"/>Company</h3>
+                    <p>{{job_details["company"]}}</p>
+
+               </div>
+
+                <div class="job_basicinfo_1_location">
+                    <h3 class="job_basicinfo_1_location_title"><img class="logo" src="../static/img/location.png"/>Location</h3>
+                    <p>{{job_details["location"]}}</p>
+                </div>
+
+                <div class="job_basicinfo_1_description">
+                    <h3 class="job_basicinfo_1_description_title"><img class="logo" src="../static/img/description.png"/>Description</h3>
+                    <p>{{job_details["details"]["BasicInfo"]["company_description"]}}</p>
+                </div>
+             </div>
+
+            <div class="job_basicinfo_2">
+                <div class="job_basicinfo_2_salary">
+                    <h3 class="job_basicinfo_2_salary_title"><img class="logo" src="../static/img/money.png"/>Salary</h3>
+                    <p>{{job_details["details"]["BasicInfo"]["min_salary"]}} - {{job_details["details"]["BasicInfo"]["max_salary"]}}</p>
+                </div>
+                <div class="job_basicinfo_2_years">
+                    <h3 class="job_basicinfo_2_years_title"><img class="logo" src="../static/img/experience.png"/>Years of experience</h3>
+                    <p>{{job_details["details"]["BasicInfo"]["min_years"]}}</p>
+                </div>
+                <div class="job_basicinfo_2_educationlevel">
+                    <h3 class="job_basicinfo_2_education_title"><img class="logo" src="../static/img/education.png"/>Education Level</h3>
+                    <p>{{job_details["details"]["BasicInfo"]["education_level"]}}</p>
+                </div>
+                <div class="job_basicinfo_2_fieldofstudy">
+                    <h3 class="job_basicinfo_2_field_title"><img class="logo" src="../static/img/field.png"/>Field of Study</h3>
+                    <p>{{job_details["details"]["BasicInfo"]["field_of_study"]}}</p>
+                </div>
+            </div>
+        </div>
+
+        <h3>Skills</h3>
+        <div class="job_skills">
+            <div class="job_skills_required">
+                <h3 style="margin-left:10px; margin-right:100px;">Required Skills</h3>
+                <ul>
+                    {% for skill in job_details["details"]["Skills"]["required_skills"] %}
+                        <li style="margin-bottom: 5px;" >{{skill}}</li>
+                    {%endfor%}
+                </ul>
+            </div>
+
+            <div class="job_skills_preferred">
+                <h3 style="margin-left:10px; margin-right:100px;">Preferred Skills</h3>
+                <ul>
+                    {% for skill in job_details["details"]["Skills"]["preferred_skills"] %}
+                        <li style="margin-bottom: 5px;">{{skill}}</li>
+                    {%endfor%}
+                </ul>
+            </div>
+        </div>
+
+        <div class="job_responsabilities">
+            <h3>Responsabilities</h3>
+             <ul>
+                    {% for responsability in job_details["details"]["Responsabilities"]["responsabilities"] %}
+                        <li style="margin-bottom: 5px;">{{responsability}}</li>
+                    {%endfor%}
+             </ul>
+
+        </div>
+    </div>
+</body>
+</html>
