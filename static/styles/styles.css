@@ -54,7 +54,7 @@ p, li {
 .job_content{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+
     background-color: lightgoldenrodyellow;
     margin: 10px;
     padding: 10px;
@@ -64,7 +64,9 @@ p, li {
 
 .job_details{
     display: flex;
+    flex: 1;
     flex-direction: column;
+    margin-left: 10px;
 }
 
 .job_title{
@@ -98,6 +100,10 @@ p, li {
 
 .button-apply{
      background-color: tomato;
+}
+
+.info-button {
+    margin-left: auto;
 }
 
 .button-back-to-jobs{
@@ -201,6 +207,17 @@ p, li {
 
 .job_basicinfo_2_salary p, .job_basicinfo_2_years p, .job_basicinfo_2_educationlevel p, .job_basicinfo_2_fieldofstudy p{
     margin: 0 0 0 38px;
+}
+
+.job_skills_title, .job_responsabilities_title{
+    display: flex;
+    align-items:center;
+    gap: 8px;
+}
+
+.job_skills_title .logo, .job_responsabilities_title .logo{
+    width: 30px;
+    height: 30px;
 }
 
 .job_skills{

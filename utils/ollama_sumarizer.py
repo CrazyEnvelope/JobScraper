@@ -1,32 +1,34 @@
+from pydantic import BaseModel
 from ollama import chat
 from utils.basemodel_class.BasicInfo import BasicInfo
 from utils.basemodel_class.Skills import Skills
 from utils.basemodel_class.Responsibilities import Responsibilities
 
-def resume_job_description(job_description_text):
-    basic = extract(job_description_text, BasicInfo)
-    skills = extract(job_description_text, Skills)
-    resp = extract(job_description_text, Responsibilities)
+class JobExtraction(BaseModel):
+    basic_info: BasicInfo
+    skills: Skills
+    responsibilities: Responsibilities
 
-    basic_skill_resp = {
+def resume_job_description(job_description_text):
+    result = extract(job_description_text, JobExtraction)
+
+    return {
         "BasicInfo": {
-            "company_description" : basic.company_description,
-            "min_salary" : basic.min_salary,
-            "max_salary" : basic.max_salary,
-            "min_years" : basic.min_years_experience,
-            "education_level" : basic.education_level,
-            "field_of_study" : basic.field_of_study,
+            "company_description": result.basic_info.company_description,
+            "min_salary": result.basic_info.min_salary,
+            "max_salary": result.basic_info.max_salary,
+            "min_years": result.basic_info.min_years_experience,
+            "education_level": result.basic_info.education_level,
+            "field_of_study": result.basic_info.field_of_study,
         },
-        "Skills":{
-            "required_skills": skills.required_skills,
-            "preferred_skills": skills.preferred_skills,
+        "Skills": {
+            "required_skills": result.skills.required_skills,
+            "preferred_skills": result.skills.preferred_skills,
         },
-        "Responsabilities":{
-            "responsabilities": resp.responsibilities,
+        "Responsabilities": {
+            "responsabilities": result.responsibilities.responsibilities,
         }
     }
-
-    return basic_skill_resp
 
 def extract(job_description_text, baseModel):
     system_prompt = """
@@ -59,8 +61,8 @@ def extract(job_description_text, baseModel):
         format=baseModel.model_json_schema(),
         options={
             "temperature": 0,
-            "num_predict": 2048,
-            "num_ctx": 8192
+            "num_predict": 512,
+            "num_ctx": 4096
         },
     )
 

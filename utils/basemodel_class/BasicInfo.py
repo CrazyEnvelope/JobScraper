@@ -15,16 +15,14 @@ class BasicInfo(BaseModel):
     min_salary: str = Field(
         "N/A",
         description=(
-            "Extract the minimum number of years of professional work experience "
-            "explicitly required by the job posting. "
-            "Look for the exact phrase 'years of experience' or similar wording. "
-            "For example, if the posting says '5+ years of professional software "
-            "engineering experience', return '5 years'. "
-            "If it says '3-5 years of experience', return '3 years'. "
-            "If no explicit years of professional experience are stated, return 'N/A'."
+            "The MINIMUM salary amount explicitly stated in the job posting. "
+            "If a salary range is stated, extract the lowest number. "
+            "Include the currency, for example '$120,000', '€100,000', '£90,000', "
+            "or '120000 USD'. Do not calculate or convert currencies. "
+            "If no salary is explicitly stated, return 'N/A'."
         )
     )
-    max_salary: Optional[str] = Field(
+    max_salary: str = Field(
         "N/A",
         description=(
             "The HIGHEST salary amount explicitly stated in the job posting. "

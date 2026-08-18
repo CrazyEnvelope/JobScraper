@@ -4,6 +4,7 @@
     <title>{{job_details["title"]}}</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../static/styles/styles.css"/>
+    <link rel="icon" type="image/x-icon" href="../static/img/search.png">
 </head>
 <body>
     <div class = "job_header">
@@ -53,7 +54,7 @@
             </div>
         </div>
 
-        <h3>Skills</h3>
+        <h3 class="job_skills_title"><img class="logo" src="../static/img/skill.png"/>Skills</h3>
         <div class="job_skills">
             <div class="job_skills_required">
                 <h3 style="margin-left:10px; margin-right:100px;">Required Skills</h3>
@@ -74,8 +75,8 @@
             </div>
         </div>
 
+        <h3 class="job_responsabilities_title"><img class="logo" src="../static/img/response.png"/>Responsabilities</h3>
         <div class="job_responsabilities">
-            <h3>Responsabilities</h3>
              <ul>
                     {% for responsability in job_details["details"]["Responsabilities"]["responsabilities"] %}
                         <li style="margin-bottom: 5px;">{{responsability}}</li>

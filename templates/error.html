@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+    <link rel="icon" type="image/x-icon" href="../static/img/search.png">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .error-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h1 { color: #dc3545; }
+        p { font-size: 18px; line-height: 1.5; }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ff9f52;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .btn:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <h1>Oops! A problem has come up!</h1>
+        <p>{{ message }}</p>
+        <a href="/" class="btn">Try again</a>
+    </div>
+</body>
+</html>
